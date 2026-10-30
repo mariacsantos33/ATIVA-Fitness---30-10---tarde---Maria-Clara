@@ -1,0 +1,482 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+    --verde-principal: #0acb52;
+    --verde-escuro: #00552b;
+    --verde-fundo: #004b25;
+    --branco: #FFFFFF;
+    --cinza-claro: #F5F5F5;
+    --cinza-medio: #929292;
+    --cinza-escuro: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--branco);
+    color: var(--cinza-escuro);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* MENU LATERAL */
+
+.menu-lateral {
+    width: 185px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--verde-escuro);
+    padding: 25px 14px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.logo {
+    width: 105px;
+    margin: 0 auto 30px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.menu-lateral nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-height: 36px;
+    padding: 9px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.item-menu img {
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+
+.item-menu:hover,
+.item-menu.ativo {
+    background-color: #0bb52e;
+    border-color: #0bb52e;
+    font-weight: 700;
+}
+
+.sair {
+    margin-top: 0;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.conteudo-principal {
+    margin-left: 185px;
+    width: calc(100% - 185px);
+    min-height: 100vh;
+    padding: 21px 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background-color: var(--branco);
+}
+
+.conteudo-principal::before {
+    content: "";
+    position: fixed;
+    top: 10px;
+    right: 0;
+    width: 35px;
+    height: 125px;
+    background-color: var(--verde-principal);
+    clip-path: polygon(100% 0, 100% 100%, 0 60%);
+    z-index: 0;
+}
+
+.conteudo-principal::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 280px;
+    background-color: var(--verde-principal);
+    clip-path: polygon(65% 0, 100% 12%, 85% 25%, 100% 34%, 0 100%, 0 65%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* PAINEL PRINCIPAL */
+
+.painel-principal {
+    width: 100%;
+    max-width: 950px;
+    min-height: calc(100vh - 42px);
+    border: 1.5px solid #929292;
+    border-radius: 9px;
+    background-color: var(--branco);
+    position: relative;
+    z-index: 1;
+    padding: 12px 32px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CABEÇALHO */
+
+.cabecalho {
+    width: 100%;
+    min-height: 35px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--verde-escuro);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.icone-usuario {
+    width: 27px;
+    height: 27px;
+    border: 2px solid var(--verde-principal);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icone-usuario img {
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+
+/* TÍTULO DA PÁGINA */
+
+.conteudo-aulas {
+    width: 100%;
+    max-width: 700px;
+    margin: 8px auto 0;
+}
+
+.titulo-pagina {
+    margin-bottom: 24px;
+}
+
+.titulo-pagina h1 {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--cinza-escuro);
+    margin-bottom: 3px;
+}
+
+.titulo-pagina p {
+    font-size: 12px;
+    color: var(--cinza-medio);
+}
+
+/* LISTA DE AULAS */
+
+.lista-aulas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-aula {
+    width: 100%;
+    min-height: 67px;
+    padding: 7px 12px;
+    border: 1px solid #70d98b;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--branco);
+    transition: 0.2s;
+}
+
+.card-aula:hover {
+    background-color: #f8fff9;
+    border-color: var(--verde-principal);
+}
+
+/* ÍCONE DA AULA */
+
+.icone-aula {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    background-color: #e1f7e4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icone-aula span {
+    font-size: 25px;
+}
+
+/* INFORMAÇÕES */
+
+.informacoes-aula {
+    flex: 1;
+    min-width: 0;
+}
+
+.informacoes-aula h2 {
+    color: var(--cinza-escuro);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.descricao-aula {
+    color: var(--cinza-medio);
+    font-size: 9px;
+    line-height: 1.4;
+}
+
+.horario-aula {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--cinza-medio);
+    font-size: 9px;
+    margin-top: 2px;
+}
+
+.relogio {
+    font-size: 16px;
+    color: #777777;
+}
+
+/* BOTÃO AGENDAR */
+
+.acao-aula {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32px;
+}
+
+.botao-agendar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 115px;
+    padding: 5px 11px;
+    border-radius: 6px;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.botao-agendar:hover {
+    background-color: var(--verde-escuro);
+}
+
+/* NENHUMA AULA */
+
+.sem-aulas {
+    width: 100%;
+    padding: 30px 15px;
+    text-align: center;
+    color: var(--cinza-medio);
+    font-size: 13px;
+    border: 1px solid #70d98b;
+    border-radius: 9px;
+}
+
+/* TABLETS */
+
+@media (max-width: 1000px) {
+    .menu-lateral {
+        width: 170px;
+    }
+
+    .conteudo-principal {
+        margin-left: 170px;
+        width: calc(100% - 170px);
+        padding: 18px 15px;
+    }
+
+    .painel-principal {
+        padding: 12px 22px 25px;
+    }
+
+    .acao-aula {
+        margin-right: 5px;
+    }
+}
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+    .menu-lateral {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .logo {
+        width: 90px;
+        margin: 0 auto 15px;
+    }
+
+    .menu-lateral nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .item-menu {
+        flex: 1 1 40%;
+        justify-content: center;
+        padding: 9px 5px;
+        font-size: 11px;
+    }
+
+    .item-menu img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .conteudo-principal {
+        margin-left: 0;
+        width: 100%;
+        min-height: calc(100vh - 150px);
+        padding: 15px 12px;
+    }
+
+    .painel-principal {
+        min-height: calc(100vh - 180px);
+        padding: 12px 13px 20px;
+    }
+
+    .conteudo-aulas {
+        margin-top: 15px;
+    }
+
+    .titulo-pagina {
+        margin-bottom: 18px;
+    }
+
+    .titulo-pagina h1 {
+        font-size: 20px;
+    }
+
+    .card-aula {
+        gap: 8px;
+        padding: 8px;
+        min-height: 75px;
+    }
+
+    .icone-aula {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+    }
+
+    .icone-aula span {
+        font-size: 21px;
+    }
+
+    .informacoes-aula h2 {
+        font-size: 12px;
+    }
+
+    .descricao-aula,
+    .horario-aula {
+        font-size: 8px;
+    }
+
+    .acao-aula {
+        margin-right: 0;
+    }
+
+    .botao-agendar {
+        min-width: 85px;
+        padding: 7px 5px;
+        font-size: 8px;
+    }
+
+    .conteudo-principal::after {
+        width: 55px;
+        height: 150px;
+    }
+}
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 375px) {
+    .item-menu {
+        font-size: 10px;
+        gap: 5px;
+    }
+
+    .card-aula {
+        gap: 6px;
+    }
+
+    .icone-aula {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+    }
+
+    .icone-aula span {
+        font-size: 18px;
+    }
+
+    .informacoes-aula h2 {
+        font-size: 11px;
+    }
+
+    .descricao-aula,
+    .horario-aula {
+        font-size: 7px;
+    }
+
+    .botao-agendar {
+        min-width: 75px;
+        font-size: 7px;
+    }
+}

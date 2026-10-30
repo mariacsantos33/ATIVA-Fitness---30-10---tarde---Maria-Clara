@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade de Aulas - ATIVA Fitness</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/grade_aulas_alunos.css') }}">
+</head>
+
+<body>
+
+    <aside class="menu-lateral">
+
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logobranca.png') }}" alt="Logo ATIVA Fitness">
+        </div>
+
+        <nav>
+            <a href="{{ url_for('dashboard') }}" class="item-menu">
+                <img src="{{ url_for('static', filename='img/icone_home.png') }}" alt="">
+                Início
+            </a>
+
+            <a href="{{ url_for('editar_perfil') }}" class="item-menu">
+                <img src="{{ url_for('static', filename='img/icone_perfil.png') }}" alt="">
+                Perfil
+            </a>
+
+            <a href="#" class="item-menu">
+                <img src="{{ url_for('static', filename='img/icone_grade.png') }}" alt="">
+                Agendamentos
+            </a>
+
+            <a href="{{ url_for('grade_aulas_alunos') }}" class="item-menu ativo">
+                <img src="{{ url_for('static', filename='img/icone_grade.png') }}" alt="">
+                Grade de Aulas
+            </a>
+
+            <a href="{{ url_for('logout') }}" class="item-menu sair">
+                <img src="{{ url_for('static', filename='img/icone_sair.png') }}" alt="">
+                Sair
+            </a>
+        </nav>
+
+    </aside>
+
+    <main class="conteudo-principal">
+
+        <section class="painel-principal">
+
+            <header class="cabecalho">
+
+                <div class="usuario">
+                    <span>{{ session.get('nome', 'Usuário') }}</span>
+                    <div class="icone-usuario">
+                        <img src="{{ url_for('static', filename='img/icone_perfil.png') }}" alt="Perfil">
+                    </div>
+                </div>
+
+            </header>
+
+            <section class="conteudo-aulas">
+
+                <div class="titulo-pagina">
+                    <h1>Grade de aulas</h1>
+                    <p>Veja todas as aulas disponíveis</p>
+                </div>
+
+                <div class="lista-aulas">
+
+                    {% for aula in aulas %}
+
+                    <article class="card-aula">
+
+                        <div class="icone-aula">
+                            {% set modalidade = aula[1]|lower %}
+
+                            {% if 'yoga' in modalidade %}
+                                <span><img src="{{ url_for('static', filename='img/yoga.png') }}" alt="Yoga"></span>
+                            {% elif 'spinning' in modalidade %}
+                                <span><img src="{{ url_for('static', filename='img/spinning.png') }}" alt="Spinning"></span>
+                            {% elif 'funcional' in modalidade %}
+                                <span><img src="{{ url_for('static', filename='img/funcional.png') }}" alt="Funcional"></span>
+                            {% elif 'muay' in modalidade %}
+                                <span><img src="{{ url_for('static', filename='img/muay.png') }}" alt="muay"></span>
+                            {% elif 'ritmo' in modalidade %}
+                                <span><img src="{{ url_for('static', filename='img/danca.png') }}" alt="ritmo"></span>
+                            {% elif 'pilates' in modalidade %}
+                                <span><img src="{{ url_for('static', filename='img/pilates.png') }}" alt="pilates"></span>
+                            {% endif %}
+                        </div>
+
+                        <div class="informacoes-aula">
+
+                            <h2>{{ aula[1] }}</h2>
+
+                            <p class="descricao-aula">
+                                Professor(a): {{ aula[2] }}
+                            </p>
+
+                            <div class="horario-aula">
+                                <span class="relogio">◷</span>
+
+                                <span>
+                                    {{ dias_semana.get(aula[4], 'Não informado') }}
+                                    {{ aula[5] }} às {{ aula[6] }}
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="acao-aula">
+                            <a href="#" class="botao-agendar">
+                                AGENDAR AULA
+                            </a>
+                        </div>
+
+                    </article>
+
+                    {% else %}
+
+                    <div class="sem-aulas">
+                        <p>Nenhuma aula disponível no momento.</p>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
